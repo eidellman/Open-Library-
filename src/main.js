@@ -9,29 +9,27 @@ import { Loading } from "./components/features/Loading";
 import {NotFound} from './components/features/NotFound'
  
 document.getElementById("app").innerHTML = `
-
  ${Header()}
  ${HomePage()}
   ${Footer()}
 `;
+
 
 async function handleSearch() {
   
   websiteState.hasSearched = true;
   websiteState.isLoading = true;
 
-  document.querySelector(".book-grid-container").innerHTML = Loading()
+  document.querySelector(".book-grid").innerHTML = Loading()
 
   const results = await searchBooks();
 
-  if(!results){
-    document.querySelector(".book-grid-container").innerHTML = NotFound();
-  }
-
-  if (results) {
+  if (results.length > 0) {
     websiteState.isLoading = false;
     bookList.books = results;
     document.querySelector(".book-grid-container").innerHTML = BookGrid();
+  } else {
+    document.querySelector(".book-grid").innerHTML = NotFound();
   }
 
   localStorage.setItem("books", JSON.stringify(bookList.books));

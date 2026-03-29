@@ -167,8 +167,10 @@ main {
   grid-template-columns: repeat(5, 1fr);
   column-gap: 16px;
   flex: 1;
- 
+ text-align: center;
 }
+
+
 
 @media (max-width: 1280px) {
   .book-grid {

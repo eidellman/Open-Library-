@@ -1,4 +1,4 @@
 
 export function Loading (){
-  return `<p class='Loading'>Loading...</p>`
+  return `<p class='loading'>Loading...</p>`
 }
